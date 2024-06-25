@@ -17,8 +17,14 @@ function makeGrid()
             for(let j=0;j<newSize;j++)
                 {
                     let col = gridContainer.appendChild(document.createElement("div"));
-                    col.style.cssText = `height:${400/newSize}px;width:${400/newSize}px;border:black solid 1px`;
-                    col.addEventListener("mouseover",()=>col.classList.toggle("colColor"));
+                    col.style.cssText = `height:${400/newSize}px;width:${400/newSize}px;border:black solid 1px;background-color:white`;
+                    col.addEventListener("mouseover", function() {
+                        if (this.style.backgroundColor === "white") {
+                            this.style.backgroundColor = "black";
+                        } else {
+                            this.style.backgroundColor = "white";
+                        }
+                    });
                     row.appendChild(col);
                 }
             }
