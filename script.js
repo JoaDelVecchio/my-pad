@@ -3,7 +3,7 @@
 function makeGrid()
 {
     gridContainer.innerHTML = "";
-    gridContainer.style.cssText =`width:${width}px;height:${height}px`;
+    gridContainer.style.cssText =`flex-direction:column;display:flex;align-items:center`;
     // FILAS
     for(let i=0;i<newSize;i++)
         {
@@ -43,9 +43,8 @@ function changeSize()
 // VARIABLES
 
 let newSize = 4; //4X4
-let gridContainer = document.querySelector("#gridContainer");
-let width = 400;
-let height = 400;
+const gridContainer = document.querySelector("main").appendChild(document.createElement("div"));
+const allElements = document.querySelectorAll("*");
 
 // HEADER
 header = document.querySelector("header");
@@ -59,6 +58,7 @@ header.appendChild(sizeBtn)
 
 // MAIN
 
+allElements.forEach(element=>element.style.cssText = "box-sizing:border-box;margin: 0;padding: 0")
 makeGrid(newSize);
 
 
