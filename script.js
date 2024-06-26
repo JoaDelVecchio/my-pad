@@ -14,11 +14,10 @@ function makeGrid() {
       let col = gridContainer.appendChild(document.createElement("div"));
       col.style.cssText = `height:${400 / newSize}px;width:${
         400 / newSize
-      }px;border:black solid 1px;background-color:white;transition:3s`;
+      }px;border:black solid 1px;background-color:white;transition:1s`;
       col.addEventListener("mouseover", function () {
         if (this.style.backgroundColor === "white") {
           this.style.backgroundColor = currentColor;
-          setTimeout(()=>this.style.backgroundColor = "white",1500);
         } else {
           this.style.backgroundColor = "white";
         }
@@ -56,16 +55,25 @@ function wasCancelled(input) {
   return false;
 }
 
-function addButton(container, text, onClickFunction) {
+function addButton(container, text, onClickFunction = null, colorPicker = false ) {
   newButton = document.createElement("button");
   newButton.style.cssText =
     "width:120px;height:50px;font-size:16px;font-weight:bold;color:white;border-radius:5px";
   newButton.textContent = text;
   newButton.addEventListener("click", onClickFunction);
+  if (colorPicker !== false)
+    {
+    let input = newButton.appendChild(document.createElement("input"));
+    input.type = "color";
+    input.addEventListener("change", ()=> currentColor = input.value)
+    newButton.appendChild(input);
+    }
   container.appendChild(newButton);
+  return newButton;
 }
 
 // VARIABLES
+
 document
   .querySelectorAll("*")
   .forEach(
@@ -80,20 +88,14 @@ const gridContainer = document
   .appendChild(document.createElement("div"));
 
 // HEADER
+
 header = document.querySelector("header");
 header.style.cssText = "height:100px;padding:10px;display:flex";
 
 addButton(header, "Change Size", changeSize);
 addButton(header, "Clear Pad", makeGrid);
-
-let colorPickerBtn = document.createElement("button");
-colorPickerBtn.textContent = "Change Color";
-colorPickerBtn.style.cssText ="width:150px;height:50px;font-size:16px;font-weight:bold;color:white;border-radius:5px";
-let colorPickerInput = document.createElement("input");
-colorPickerInput.type = "color";
-colorPickerBtn.appendChild(colorPickerInput);
-colorPickerInput.addEventListener("change", ()=> currentColor = colorPickerInput.value)
-header.appendChild(colorPickerBtn)
+let changeColorBtn = addButton(header, "Change Color",null,true);
+changeColorBtn.style.width = "150px"
 
 // MAIN
 
