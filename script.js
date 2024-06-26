@@ -1,4 +1,3 @@
-
 // FUNCTIONS
 function makeGrid()
 {
@@ -39,26 +38,31 @@ function changeSize()
         makeGrid(newSize);
     }
 
-        
-// VARIABLES
+function addButton(container, text, onClickFunction){
+    newButton = document.createElement("button");
+    newButton.style.cssText = "width:120px;height:50px;font-size:16px;font-weight:bold;color:white;border-radius:5px";
+    newButton.textContent = text;
+    newButton.addEventListener("click",onClickFunction);
+    container.appendChild(newButton);
+}
 
-let newSize = 4; //4X4
-const gridContainer = document.querySelector("main").appendChild(document.createElement("div"));
-const allElements = document.querySelectorAll("*");
+    
+    document.querySelectorAll("*").forEach(element=>element.style.cssText = "box-sizing:border-box;margin: 0;padding: 0");
+    // VARIABLES
+    
+    let newSize = 4; //4X4
+    const gridContainer = document.querySelector("main").appendChild(document.createElement("div"));
 
 // HEADER
 header = document.querySelector("header");
-header.style.cssText = "height:50px;padding:10px;display:flex"
+header.style.cssText = "height:100px;padding:10px;display:flex"
 
-sizeBtn = document.createElement("button");
-sizeBtn.textContent = "Change Size"
-sizeBtn.style.cssText = "width:120px;font-size:16px;font-weight:bold;color:white;border-radius:5px"
-sizeBtn.addEventListener("click", ()=>changeSize());
-header.appendChild(sizeBtn)
+addButton(header,"Change Size",changeSize);
+addButton(header,"Clear Pad",makeGrid);
+//addButton(header,"Change Color",changeColor);
 
 // MAIN
 
-allElements.forEach(element=>element.style.cssText = "box-sizing:border-box;margin: 0;padding: 0")
 makeGrid(newSize);
 
 
