@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
             input.addEventListener("change", () => {
                 currentColor = input.value;
             });
+            newButton.style.marginRight = 0;
             newButton.appendChild(input);
             newButton.addEventListener("click", () => input.click());
         }
@@ -62,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function makeGrid() {
         gridContainer.innerHTML = "";
-        gridContainer.style.cssText = `flex-direction:column;display:flex;align-items:center`;
+        gridContainer.style.cssText = `flex-direction:column;display:flex;align-items:center;justify-content:center`;
 
         for (let i = 0; i < newSize; i++) {
             let row = document.createElement("div");
@@ -109,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
     headerText.style.cssText = "font-size:50px;";
     header.appendChild(headerText);
 
-    main.style.cssText = "width:100%;height:calc(80vh - 60px);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:40px;padding:30px;";
+    main.style.cssText = "width:100%;height:80vh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:40px;";
     buttonsContainer.style.cssText = "display:flex;justify-content:center;gap:20px;";
     addButton(buttonsContainer, "Change Size", changeSize);
     addButton(buttonsContainer, "Clear Pad", () => makeGrid(newSize));
