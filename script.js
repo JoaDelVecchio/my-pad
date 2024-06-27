@@ -129,14 +129,14 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("body").style.fontFamily = "'Montserrat',sans-serif";
 
   header.style.cssText =
-    "width:100%;height:10vh;display:flex;justify-content:center;align-items:center;";
+    "width:100%;height:15vh;display:flex;justify-content:center;align-items:center;";
   const headerText = document.createElement("p");
   headerText.textContent = "the pad";
   headerText.style.cssText = "font-size:50px;font-weight:bold";
   header.appendChild(headerText);
 
   main.style.cssText =
-    "width:100%;height:80vh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:40px;";
+    "width:100%;height:70vh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:40px;";
   buttonsContainer.style.cssText =
     "display:flex;justify-content:center;gap:20px;";
   addButton(buttonsContainer, "change size", changeSize);
@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
   changeColorBtn.style.width = "150px";
 
   footer.style.cssText =
-    "width:100%;height:10vh;display:flex;justify-content:center;align-items:center;";
+    "width:100%;height:15vh;display:flex;justify-content:center;align-items:center;";
   const footerText = document.createElement("p");
   footerText.textContent = "made by joadelvecchio";
   footerText.style.cssText = "font-size:20px;";
