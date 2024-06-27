@@ -1,4 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Import font
+  fontFamily = document.createElement("style");
+  fontFamily.textContent =
+    "@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap')";
+  document.querySelector("head").appendChild(fontFamily);
+  
   // Variable Declarations
   let currentColor = "black";
   let newSize = 16;
@@ -120,21 +126,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const footer = document.createElement("footer");
   document.body.appendChild(footer);
 
+  document.querySelector("body").style.fontFamily = "'Montserrat',sans-serif";
 
   header.style.cssText =
     "width:100%;height:10vh;display:flex;justify-content:center;align-items:center;";
   const headerText = document.createElement("p");
-  headerText.textContent = "My Pad";
-  headerText.style.cssText = "font-size:50px;";
+  headerText.textContent = "the pad";
+  headerText.style.cssText = "font-size:50px;font-weight:bold";
   header.appendChild(headerText);
 
   main.style.cssText =
     "width:100%;height:80vh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:40px;";
   buttonsContainer.style.cssText =
     "display:flex;justify-content:center;gap:20px;";
-  addButton(buttonsContainer, "Change Size", changeSize);
-  addButton(buttonsContainer, "Clear Pad", () => makeGrid(newSize));
-  let changeColorBtn = addButton(buttonsContainer, "Change Color", null, true);
+  addButton(buttonsContainer, "change size", changeSize);
+  addButton(buttonsContainer, "clear pad", () => makeGrid(newSize));
+  let changeColorBtn = addButton(buttonsContainer, "change color", null, true);
   changeColorBtn.style.width = "150px";
 
   footer.style.cssText =
